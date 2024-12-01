@@ -166,3 +166,15 @@ a.secondary {
     filter: invert();
   }
 }
+
+.loginLink {
+  color: #0070f3;
+  font-size: 18px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.loginLink:hover {
+  text-decoration: underline;
+}
+

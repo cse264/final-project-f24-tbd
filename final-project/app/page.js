@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link';
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
           <li>
             Get started by editing <code>app/page.js</code>.
           </li>
-          <li>Save and see your changes instantly.</li>
+          <li>Welcome to Next live code!</li>
         </ol>
 
         <div className={styles.ctas}>
@@ -44,6 +45,11 @@ export default function Home() {
           >
             Read our docs
           </a>
+        </div>
+        <div>
+          <Link href="/login">
+            <a className={styles.loginLink}>Go to Login</a>
+          </Link>
         </div>
       </main>
       <footer className={styles.footer}>
