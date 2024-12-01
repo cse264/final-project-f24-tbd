@@ -46,11 +46,6 @@ export default function Home() {
             Read our docs
           </a>
         </div>
-        <div>
-          <Link href="/login">
-            <a className={styles.loginLink}>Go to Login</a>
-          </Link>
-        </div>
       </main>
       <footer className={styles.footer}>
         <a
