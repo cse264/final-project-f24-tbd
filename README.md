@@ -1,3 +1,5 @@
+Liza Tulyankina and Alexis Guzman
+
 # Final Project
 
 ## Due Last day of Class
