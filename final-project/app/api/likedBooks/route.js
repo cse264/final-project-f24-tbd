@@ -35,6 +35,7 @@ export async function GET(req) {
          COALESCE(
            json_agg(
              json_build_object(
+               'review_id', r.id,
                'review_text', r.review_text,
                'review_author_id', r.user_id,
                'review_author_name', u.username
@@ -58,7 +59,8 @@ export async function GET(req) {
          lb.google_book_id, lb.title, lb.thumbnail_url, lb.authors`,
       [userId]
     );
-    
+
+    console.log('Query Result:', result.rows);
 
     return new Response(JSON.stringify(result.rows), {
       status: 200,

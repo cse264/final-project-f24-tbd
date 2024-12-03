@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'; // Import JWT library
 
 export async function DELETE(req) {
   try {
-    const { bookId, reviews } = await req.json(); // Get bookId and reviews from request body
+    const { bookId } = await req.json(); // Get bookId from request body
     const authHeader = req.headers.get('Authorization'); // Get the Authorization header
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -27,7 +27,6 @@ export async function DELETE(req) {
       return new Response('User ID not found in token', { status: 400 });
     }
 
-
     // Delete the liked book from the user's liked books
     await query(
       `DELETE FROM liked_books
@@ -35,7 +34,7 @@ export async function DELETE(req) {
       [bookId, userId]
     );
 
-    return new Response('Liked book removed successfully', { status: 200 });
+    return new Response('Liked book and associated reviews removed successfully', { status: 200 });
   } catch (error) {
     console.error('Error:', error);
     return new Response('Error removing liked book', { status: 500 });
