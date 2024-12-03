@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -22,12 +22,13 @@ export default function Login() {
       });
 
       if (!response.ok) {
-        const data = await response.json(); // Parse the JSON response
-        setError(data.message); // Display error message
+        const data = await response.json();
+        setError(data.message);
       } else {
-        // Successful login
-        const data = await response.json(); // Optional: Handle successful login response (if needed)
-        router.push('/lookup'); // Redirect to homepage or another page
+        const data = await response.json();
+        console.log(data);
+        localStorage.setItem('token', data.token);
+        router.push('/lookup');
       }
     } catch (error) {
       setError('Something went wrong. Please try again.');
@@ -58,7 +59,7 @@ export default function Login() {
             required
           />
         </div>
-        {error && <p>{error}</p>} {/* Display error message */}
+        {error && <p>{error}</p>}
         <button type="submit">Login</button>
       </form>
     </div>

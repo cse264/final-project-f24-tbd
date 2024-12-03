@@ -1,32 +1,38 @@
-import { query } from '../../lib/db';  // Make sure the path is correct
+import jwt from 'jsonwebtoken';
 
-export async function POST(req, res) {
+import { query } from '../../lib/db';  // Ensure the path is correct
+
+export async function POST(req) {
   try {
     const { username, password } = await req.json();
 
     // Query the database for the user
     const result = await query('SELECT * FROM users WHERE username = $1', [username]);
 
-    if (result.length === 0) {
-      return res.status(404).json({ message: 'User not found' });
+    if (result.rowCount === 0) {
+      return new Response(JSON.stringify({ message: 'User not found' }), { status: 404 });
     }
 
-    const user = result[0];
+    const user = result.rows[0];
 
     // Compare the entered password with the stored password (plaintext comparison)
     if (password !== user.password) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return new Response(JSON.stringify({ message: 'Invalid credentials' }), { status: 401 });
     }
 
     // Generate JWT
-    const token = jwt.sign({ userId: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user.id, username: user.username, membership: user.membership }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    // Set token as a cookie
-    res.setHeader('Set-Cookie', `token=${token}; HttpOnly; Path=/; Max-Age=3600`);
-
-    return res.status(200).json({ message: 'Login successful' });
+    // Returning the JWT token in the response with appropriate status code
+    return new Response(
+      JSON.stringify({ message: 'Login successful', token }),
+      { status: 200, headers: { 'Set-Cookie': `token=${token}; HttpOnly; Path=/; Max-Age=3600` } }
+    );
   } catch (error) {
     console.error('Error logging in:', error);
-    return res.status(500).json({ message: 'Server error' });
+    return new Response(
+      JSON.stringify({ message: 'Server error' }),
+      { status: 500 }
+    );
   }
 }

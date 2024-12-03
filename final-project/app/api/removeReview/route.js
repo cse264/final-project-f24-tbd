@@ -1,8 +1,9 @@
 import { query } from '../../lib/db'; // Import the query function from db.js
 import jwt from 'jsonwebtoken'; // Import JWT library
 
-export async function GET(req) {
+export async function DELETE(req) {
   try {
+    const { reviewId } = await req.json(); // Get reviewId from request body
     const authHeader = req.headers.get('Authorization'); // Get the Authorization header
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -25,46 +26,28 @@ export async function GET(req) {
     if (!userId) {
       return new Response('User ID not found in token', { status: 400 });
     }
-   
-    const result = await query(
-      `SELECT 
-         lb.google_book_id, 
-         lb.title, 
-         lb.thumbnail_url, 
-         lb.authors, 
-         COALESCE(
-           json_agg(
-             json_build_object(
-               'review_text', r.review_text,
-               'review_author_id', r.user_id,
-               'review_author_name', u.username
-             )
-           ) FILTER (WHERE r.review_text IS NOT NULL), 
-           '[]'
-         ) AS reviews
-       FROM 
-         liked_books lb
-       LEFT JOIN 
-         reviews r 
-       ON 
-         lb.google_book_id = r.book_id
-       LEFT JOIN 
-         users u 
-       ON 
-         r.user_id = u.id
-       WHERE 
-         lb.user_id = $1
-       GROUP BY 
-         lb.google_book_id, lb.title, lb.thumbnail_url, lb.authors`,
-      [userId]
-    );
-    
 
-    return new Response(JSON.stringify(result.rows), {
-      status: 200,
-    });
+    // Check if the review belongs to the logged-in user
+    const reviewResult = await query(
+      `SELECT * FROM reviews WHERE id = $1 AND user_id = $2`,
+      [reviewId, userId]
+    );
+
+    if (reviewResult.rows.length === 0) {
+      return new Response('Review not found or does not belong to the user', {
+        status: 404,
+      });
+    }
+
+    // Delete the review from the reviews table
+    await query(
+      `DELETE FROM reviews WHERE id = $1 AND user_id = $2`,
+      [reviewId, userId]
+    );
+
+    return new Response('Review removed successfully', { status: 200 });
   } catch (error) {
     console.error('Error:', error);
-    return new Response('Error fetching liked books', { status: 500 });
+    return new Response('Error removing review', { status: 500 });
   }
 }

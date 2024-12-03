@@ -40,15 +40,24 @@ export default function Search() {
 
   const handleLike = async (book) => {
     try {
-      const response = await axios.post('/api/likeBook', {
-        userId,
-        googleBookId: book.id,
-        title: book.volumeInfo.title,
-        authors: book.volumeInfo.authors,
-        description: book.volumeInfo.description,
-        thumbnailUrl: book.volumeInfo.imageLinks?.thumbnail || '',
-      });
-
+      const token = localStorage.getItem('token'); // Retrieve the JWT token
+  
+      const response = await axios.post(
+        '/api/likeBook',
+        {
+          googleBookId: book.id,
+          title: book.volumeInfo.title,
+          authors: book.volumeInfo.authors,
+          description: book.volumeInfo.description,
+          thumbnailUrl: book.volumeInfo.imageLinks?.thumbnail || '',
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Send the token in the Authorization header
+          },
+        }
+      );
+  
       if (response.status === 200) {
         alert('Book liked successfully!');
       } else {
@@ -56,8 +65,10 @@ export default function Search() {
       }
     } catch (error) {
       alert('An error occurred while liking the book.');
+      console.error('Like error:', error);
     }
   };
+  
 
   const handleReviewChange = (e) => {
     setReviewText(e.target.value);
@@ -65,16 +76,25 @@ export default function Search() {
 
   const handleSubmitReview = async () => {
     if (!reviewText) return;
-
+  
     setIsSubmittingReview(true);
-
+  
     try {
-      const response = await axios.post('/api/review', {
-        bookId: activeBookId,
-        userId,
-        reviewText,
-      });
-
+      const token = localStorage.getItem('token'); // Retrieve the JWT token
+  
+      const response = await axios.post(
+        '/api/review',
+        {
+          bookId: activeBookId,
+          reviewText,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Send the token in the Authorization header
+          },
+        }
+      );
+  
       if (response.status === 200) {
         alert('Review added successfully!');
         setReviewText(''); // Clear the review form
@@ -84,10 +104,11 @@ export default function Search() {
       }
     } catch (error) {
       alert('An error occurred while submitting the review.');
+      console.error('Review submission error:', error);
     } finally {
       setIsSubmittingReview(false);
     }
-  };
+  };  
 
   return (
     <div>
