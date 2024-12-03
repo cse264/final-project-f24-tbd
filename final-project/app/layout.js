@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import "./globals.css";
+import './globals.css';
 import { AuthProvider } from './context/AuthContext';
 import NavBarWrapper from "./components/NavBarWrapper";
 
