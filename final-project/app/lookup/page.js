@@ -111,7 +111,8 @@ export default function Search() {
   };  
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col justify-between bg-black-100 bg-[url('/giphy.webp')] bg-cover bg-center">
+    <main className="flex-grow flex flex-col items-center justify-center text-center">
       <h1>Search for a Book</h1>
       <form onSubmit={handleSearch}>
         <input
@@ -170,6 +171,7 @@ export default function Search() {
           </ul>
         )}
       </div>
+      </main>
     </div>
   );
 }
