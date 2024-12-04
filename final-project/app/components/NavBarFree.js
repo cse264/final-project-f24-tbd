@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export const NavBarPrem = ({ logout }) => {
+export const NavBarFree = ({ logout }) => {
     return(
         <div className="w-full bg-black-100">
         <nav className="flex justify-center space-x-4 py-2 bg-orange-800 text-white">
