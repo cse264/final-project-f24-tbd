@@ -108,66 +108,72 @@ export default function LikedBooksPage() {
   };  
 
   return (
-    <div>
-      <h1>Your Liked Books</h1>
-  
-      <div>
-        {likedBooks.length > 0 ? (
-          <ul>
-            {likedBooks.map((book) => (
-              <li key={book.google_book_id}>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-                  {book.thumbnail_url && (
-                    <img
-                      src={book.thumbnail_url}
-                      alt={book.title}
-                      style={{ width: '50px', height: '75px', marginRight: '10px' }}
-                    />
-                  )}
-                  <div>
-                    <strong>{book.title}</strong> by {book.authors || 'Unknown'}
+    <div className="min-h-screen flex flex-col justify-between bg-black-100 bg-[url('/giphy.webp')] bg-cover bg-center">
+      <main className="flex-grow flex flex-col items-center justify-center text-center">
+        <h1 className="lg:text-5xl my-4 text-white font-bold mb-6">Your Liked Books</h1>
+        <hr className="w-full border-t-2 border-gray-300 mb-6" />
+        <div>
+          {likedBooks.length > 0 ? (
+            <ul>
+              {likedBooks.map((book) => (
+                <li key={book.google_book_id} className="mb-6">
+                  <div className="flex flex-col items-center mb-4">
+                    {book.thumbnail_url && (
+                      <img
+                        src={book.thumbnail_url}
+                        alt={book.title}
+                        className="w-60 h-100 mb-2"
+                      />
+                    )}
+                    <div className="text-center lg:text-3xl">
+                      <strong>{book.title}</strong> by {book.authors || 'Unknown'}
+                    </div>
                   </div>
                   <button
                     onClick={() => handleRemove(book.google_book_id)}
-                    style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}
+                    className="px-3 py-2 bg-red-800 text-white font-semibold rounded-md hover:bg-red-600 mb-4"
                   >
                     Remove Book
                   </button>
-                </div>
+                  <div className="ml-5">
+                    <h4 className="lg:text-3xl text-white font-bold mb-2">Reviews</h4>
+                    {book.reviews && book.reviews.length > 0 ? (
+                      <ul>
+                        {book.reviews.map((review) => {
+                          console.log('Review object:', review); // Log the review object here
+                          return (
+                            <li key={review.review_id} className="mb-4">
+                              <p>{review.review_text}</p>
+                              <small>By {review.review_author_name || 'Unknown User'}</small>
+                              {review.review_author_id === userId && (
+                                <button
+                                  onClick={() => handleRemoveReview(book.google_book_id, review.review_id)}
+                                  className="px-2 py-1 bg-red-800 text-white font-semibold rounded-md hover:bg-red-600 mt-2"
+                                >
+                                  Remove Review
+                                </button>
+                                
+                              )}
+                            </li>
+                            
+                          );
+                        })}
+                      </ul>
+                    ) : (
+                      <p>No reviews available.</p>
+                    )}
+                    <hr className="w-full max-w-3xl border-t-2 border-gray-300 mx-auto mb-6" />
 
-                <div style={{ marginLeft: '20px' }}>
-                  <h4>Reviews:</h4>
-                  {book.reviews && book.reviews.length > 0 ? (
-                    <ul>
-                      {book.reviews.map((review) => {
-                        console.log('Review object:', review); // Log the review object here
-                        return (
-                          <li key={review.review_id}> {/* Check if review_id is present */}
-                            <p>{review.review_text}</p>
-                            <small>By {review.review_author_name || 'Unknown User'}</small>
-                            {review.review_author_id === userId && (
-                              <button
-                                onClick={() => handleRemoveReview(book.google_book_id, review.review_id)}
-                                style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}
-                              >
-                                Remove Review
-                              </button>
-                            )}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  ) : (
-                    <p>No reviews available.</p>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No liked books found.</p>
-        )}
-      </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No liked books found.</p>
+          )}
+        </div>
+      </main>
     </div>
   );
+  
 }

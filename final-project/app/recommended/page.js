@@ -53,21 +53,30 @@ export default function Recommended() {
   }
 
   return (
-    <div>
-      <h1>Recommended Books</h1>
+    <div className="min-h-screen flex flex-col justify-between bg-black-100 bg-[url('/giphy.webp')] bg-cover bg-center">
+      <main className="flex-grow flex flex-col items-center justify-center text-center">
+      <h1 className="text-2xl md:text-5xl lg:text-5xl my-4 text-white font-bold mb-6">Recommended for You</h1>
+        <hr className="w-full border-t-2 border-gray-300 mb-6" />
       <ul>
         {recommendations.length > 0 ? (
           recommendations.map((book, index) => (
-            <li key={index}>
-              <h3>{book.volumeInfo.title}</h3>
+            <li key={index} className="flex-grow flex flex-col items-center justify-center text-center">
+              <h3 className = "lg:text-2xl font-bold">{book.volumeInfo.title}</h3>
               <p>{book.volumeInfo.authors?.join(", ")}</p>
-              <img src={book.volumeInfo.imageLinks?.thumbnail} alt={book.volumeInfo.title} />
+              
+              <img 
+                src={book.volumeInfo.imageLinks?.thumbnail} 
+                alt={book.volumeInfo.title} 
+                className="w-60 h-100 mb-4 my-4"
+                />
+
             </li>
           ))
         ) : (
           <p>No recommendations available.</p>
         )}
       </ul>
+      </main>
     </div>
   );
 }
