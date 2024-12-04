@@ -108,7 +108,7 @@ export default function LikedBooksPage() {
   };  
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-black-100 bg-[url('/giphy.webp')] bg-cover bg-center">
+    <div className="min-h-screen flex flex-col justify-between bg-[url('/giphy.webp')] bg-contain bg-center">
       <main className="flex-grow flex flex-col items-center justify-center text-center">
         <h1 className="lg:text-5xl my-4 text-white font-bold mb-6">Your Liked Books</h1>
         <hr className="w-full border-t-2 border-gray-300 mb-6" />
