@@ -135,8 +135,8 @@ export default function Search() {
           <ul>
             {books.map((book) => (
               <li key={book.id}>
-                <h2 className="lg:text-3xl font-bold mb-3">{book.volumeInfo.title}</h2>
-                <p>{book.volumeInfo.authors?.join(', ')}</p>
+                <h2 className="lg:text-3xl font-bold mb-1">{book.volumeInfo.title}</h2>
+                <p className="my-2 mb-8">{book.volumeInfo.authors?.join(', ')}</p>
                 <p>{book.volumeInfo.description}</p>
                 {book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail && (
                   <img
@@ -166,8 +166,8 @@ export default function Search() {
                     <br />
                     <button
                       onClick={handleSubmitReview}
-                      disabled={isSubmittingReview}
-                    >
+                      disabled={isSubmittingReview}   
+                      className="px-4 py-1 text-white font-semibold rounded-full bg-orange-600 hover:bg-orange-400 my-2 mb-8"           >
                       {isSubmittingReview ? 'Submitting Review...' : 'Submit Review'}
                     </button>
                   </div>
