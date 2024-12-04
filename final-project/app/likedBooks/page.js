@@ -135,14 +135,14 @@ export default function LikedBooksPage() {
                   >
                     Remove Book
                   </button>
-                  <div className="">
+                  <div>
                     <h4 className="text-3xl text-white font-semibold mb-4 underline">Reviews</h4>
                     {book.reviews && book.reviews.length > 0 ? (
                       <ul>
                         {book.reviews.map((review) => {
                           console.log('Review object:', review); // Log the review object here
                           return (
-                            <li key={review.review_id} className="mb-4">
+                            <li key={review.review_id} className="flex flex-col mx-auto w-80 h-40 bg-neutral-900 rounded-lg flex items-center justify-center mb-4">
                               <p className="text-2xl">{review.review_text}</p>
                               <small className="text-lg">By {review.review_author_name || 'Unknown User'}</small>
                               {review.review_author_id === userId && (
