@@ -1,7 +1,7 @@
 'use client'
 
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect} from 'react';
 import { NavBarFree } from './NavBarFree';
 import { NavBarPrem } from './NavBarPrem';
 import { NavBar } from './NavBar';
