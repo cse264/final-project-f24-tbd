@@ -6,11 +6,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col justify-between bg-black-100">
       <main className="flex-grow flex flex-col items-center justify-center text-center">
       <Image src="/Ybin.gif"
-<<<<<<< HEAD
-       alt="Description of the image" 
-=======
        alt="bookgif" 
->>>>>>> refs/remotes/origin/master
        width={300} height={200} 
        className="mb-4" />
         <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-2">The HyperSpace Library</h1>
