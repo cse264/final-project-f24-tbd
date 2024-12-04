@@ -149,7 +149,7 @@ export default function Search() {
                 <button onClick={() => handleLike(book)} className="px-4 py-2 bg-green-600 text-white font-semibold rounded-full hover:bg-green-400">Like</button>
 
                 {/* Add Review Button */}
-                <button onClick={() => setActiveBookId(book.id)} className="px-4 py-2 bg-yellow-600 text-white font-semibold rounded-full hover:bg-yellow-400">Add Review</button>
+                <button onClick={() => setActiveBookId(book.id)} className="ml-2 px-4 py-2 bg-yellow-600 text-white font-semibold rounded-full hover:bg-yellow-400">Add Review</button>
                 <hr className="w-full border-t-2 border-gray-300 mx-auto my-4 mb-4" />
 
 
