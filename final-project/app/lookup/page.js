@@ -136,13 +136,13 @@ export default function Search() {
             {books.map((book) => (
               <li key={book.id}>
                 <h2 className="lg:text-3xl font-bold mb-1">{book.volumeInfo.title}</h2>
-                <p className="my-2 mb-8">{book.volumeInfo.authors?.join(', ')}</p>
-                <p>{book.volumeInfo.description}</p>
+                <p className="my-2 mb-6">{book.volumeInfo.authors?.join(', ')}</p>
+                <p className="max-w-xl mx-auto">{book.volumeInfo.description}</p>
                 {book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail && (
                   <img
                     src={book.volumeInfo.imageLinks.thumbnail}
                     alt={book.volumeInfo.title}
-                    className="mx-auto w-60 h-100 mb-4 my-4 flex-grow flex flex-col items-center justify-center text-center"
+                    className="mx-auto w-60 h-100 mb-6 my-6 flex-grow flex flex-col items-center justify-center text-center"
 
                   />
                 )}
@@ -150,7 +150,7 @@ export default function Search() {
 
                 {/* Add Review Button */}
                 <button onClick={() => setActiveBookId(book.id)} className="ml-2 px-4 py-2 bg-yellow-600 text-white font-semibold rounded-full hover:bg-yellow-400">Add Review</button>
-                <hr className="w-full border-t-2 border-gray-300 mx-auto my-4 mb-4" />
+                <hr className="w-full border-t-2 border-gray-300 mx-auto my-8 mb-8" />
 
 
                 {/* Review Form (shown when 'Add Review' is clicked) */}
