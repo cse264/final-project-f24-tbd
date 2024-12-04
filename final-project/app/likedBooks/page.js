@@ -122,33 +122,33 @@ export default function LikedBooksPage() {
                       <img
                         src={book.thumbnail_url}
                         alt={book.title}
-                        className="w-60 h-100 mb-2"
+                        className="w-60 h-100 mb-2 my-6"
                       />
                     )}
-                    <div className="text-center lg:text-3xl">
+                    <div className="text-center lg:text-3xl my-4 mb-4">
                       <strong>{book.title}</strong> by {book.authors || 'Unknown'}
                     </div>
                   </div>
                   <button
                     onClick={() => handleRemove(book.google_book_id)}
-                    className="px-3 py-2 bg-red-800 text-white font-semibold rounded-md hover:bg-red-600 mb-4"
+                    className="px-3 py-2 text-xs bg-red-800 text-white font-semibold rounded-md hover:bg-red-600 mb-8"
                   >
                     Remove Book
                   </button>
-                  <div className="ml-5">
-                    <h4 className="lg:text-3xl text-white font-bold mb-2">Reviews</h4>
+                  <div className="">
+                    <h4 className="text-3xl text-white font-semibold mb-4 underline">Reviews</h4>
                     {book.reviews && book.reviews.length > 0 ? (
                       <ul>
                         {book.reviews.map((review) => {
                           console.log('Review object:', review); // Log the review object here
                           return (
                             <li key={review.review_id} className="mb-4">
-                              <p>{review.review_text}</p>
-                              <small>By {review.review_author_name || 'Unknown User'}</small>
+                              <p className="text-2xl">{review.review_text}</p>
+                              <small className="text-lg">By {review.review_author_name || 'Unknown User'}</small>
                               {review.review_author_id === userId && (
                                 <button
                                   onClick={() => handleRemoveReview(book.google_book_id, review.review_id)}
-                                  className="px-2 py-1 bg-red-800 text-white font-semibold rounded-md hover:bg-red-600 mt-2"
+                                  className="px-2 py-1 text-xs bg-red-800 text-white font-semibold rounded-md hover:bg-red-600 mt-2"
                                 >
                                   Remove Review
                                 </button>
@@ -162,7 +162,7 @@ export default function LikedBooksPage() {
                     ) : (
                       <p>No reviews available.</p>
                     )}
-                    <hr className="w-full max-w-3xl border-t-2 border-gray-300 mx-auto mb-6" />
+                    <hr className="w-full max-w-3xl border-t-2 border-gray-300 mx-auto my-10 mb-6" />
 
                   </div>
                 </li>

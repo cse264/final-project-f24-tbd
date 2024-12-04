@@ -79,7 +79,9 @@ export default function Login() {
           />
         </div>
         {error && <p>{error}</p>}
-        <button type="submit">Login</button>
+        <div className="flex">
+        <button type="submit" className="ml-24 px-5 py-0.5 bg-red-800 text-white font-semibold rounded-md hover:bg-red-600 mb-4">Login</button>
+        </div>
       </form>
       </main>
     </div>
