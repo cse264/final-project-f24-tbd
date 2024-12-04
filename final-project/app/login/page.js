@@ -56,11 +56,12 @@ export default function Login() {
 
     <div className="min-h-screen flex flex-col justify-between bg-black-100 bg-[url('/giphy.webp')] bg-cover bg-center">
       <main className="flex-grow flex flex-col items-center justify-center text-center">
-      
+      <div className="w-80 h-40 bg-orange-800 rounded-lg flex items-center justify-center">
       <form onSubmit={handleLogin}>
         <div>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username" className="font-bold">Username</label>
           <input
+            className="ml-2 mb-1"
             type="text"
             id="username"
             value={username}
@@ -69,8 +70,9 @@ export default function Login() {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password" className="font-bold">Password</label>
           <input
+            className="ml-2 mb-1"
             type="password"
             id="password"
             value={password}
@@ -80,10 +82,12 @@ export default function Login() {
         </div>
         {error && <p>{error}</p>}
         <div className="flex">
-        <button type="submit" className="ml-24 px-5 py-0.5 bg-red-800 text-white font-semibold rounded-md hover:bg-red-600 mb-4">Login</button>
+        <button type="submit" className="ml-24 px-5 py-0.5 bg-orange-400 text-white font-semibold rounded-md hover:bg-orange-600 my-2 mb-1">Login</button>
         </div>
       </form>
+      </div>
       </main>
+      
     </div>
   );
 }

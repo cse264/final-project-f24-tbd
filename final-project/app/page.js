@@ -11,7 +11,7 @@ export default function Home() {
        className="mb-4" />
         <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-2">The HyperSpace Library</h1>
         <hr className="w-full max-w-3xl border-t-2 border-gray-300 my-4" />
-        <Link href="/login" className="px-6 py-3 bg-orange-800 my-4 text-white font-semibold rounded-md hover:bg-orange-600">
+        <Link href="/login" className="px-6 py-3 bg-orange-400 my-4 text-white font-semibold rounded-md hover:bg-orange-600">
             Get Started
         </Link>
       </main>
