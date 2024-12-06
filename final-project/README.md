@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The HyperSpace Library 
 
-## Getting Started
+## Alexis Guzman - frontend, database
+## Liza Tulyankina - backend, UI
 
-First, run the development server:
+## Requirements:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Must have user accounts and different user roles (like user/Admin, free/paid, etc)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Premium users get tailored recommendations based on their reading history and likes. Standard users can comment and like books.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Must use a database (you choose)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+PostgreSQL for relational data structure (reviews, users, books)
 
-## Learn More
+Must have interactive UI (of any kind)
 
-To learn more about Next.js, take a look at the following resources:
+Book search, review posting, likes, and recommendation sections.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Must use a library or framework not discussed/used in class
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next.js for server-rendered UI and API handling. (Not sure if we will discuss this in class)
 
-## Deploy on Vercel
+Must use an outside REST API in some way (Outside as in external, like the Reddit API, etc)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Google Books API has data on millions of books
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+User story/Use case:
+
+The HyperSpace Library is an interactive reading list that allows users to browse books and track books they’ve read. The user will login as either basic or premium user. If the user is basic, they will be able to look up books, add it to their liked books, and comment on the book. If the user is premium, they can do the same thing but they will also be able to look at their recommendations tab that will give them additional books based on their liked books. 
+
+Tech Stack: 
+
+Next.js, Node.js, PostgreSQL, Google Books API, JWT for user authentication.
+npm install jsonwebtoken cookies
+npm install axios
+npm install -D tailwindcss postcss autoprefixer
+
