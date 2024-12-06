@@ -38,7 +38,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-black-100 bg-[url('/giphy.webp')] bg-cover bg-center">
       <main className="flex-grow flex flex-col items-center justify-center text-center">
-      <div className="w-80 h-40 bg-orange-800 rounded-lg flex items-center justify-center">
+      <div className="w-80 h-40 bg-zinc-800 rounded-lg flex items-center justify-center">
       <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="username" className="font-bold">Username</label>
