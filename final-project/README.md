@@ -34,18 +34,18 @@ The HyperSpace Library is an interactive reading list that allows users to brows
 Next.js, Node.js, PostgreSQL, Google Books API, JWT for user authentication.
 
 ### How to run
-npm install pg
-npm install jsonwebtoken cookies
-npm install axios
-npm install -D tailwindcss postcss autoprefixer
+- npm install pg
+- npm install jsonwebtoken cookies
+- npm install axios
+- npm install -D tailwindcss postcss autoprefixer
 
 ### Keys
 
-GOOGLE_BOOKS_API_KEY=AIzaSyCLJbEwP-hNUEgTaWirLqfJaWZvOnOS1eM
-JWT_SECRET=my$ecretKey@2024*RandomString
-POSTGRES_HOST=ep-purple-cherry-a57wldf3.us-east-2.aws.neon.tech
-POSTGRES_PORT=5432
-POSTGRES_DBNAME=hyperspace_library
-POSTGRES_USERNAME=hyperspace_library_owner
-POSTGRES_PASSWORD=dc6WsHPMU2Ao
+- GOOGLE_BOOKS_API_KEY=AIzaSyCLJbEwP-hNUEgTaWirLqfJaWZvOnOS1eM
+- JWT_SECRET=my$ecretKey@2024*RandomString
+- POSTGRES_HOST=ep-purple-cherry-a57wldf3.us-east-2.aws.neon.tech
+- POSTGRES_PORT=5432
+- POSTGRES_DBNAME=hyperspace_library
+- POSTGRES_USERNAME=hyperspace_library_owner
+- POSTGRES_PASSWORD=dc6WsHPMU2Ao
 
