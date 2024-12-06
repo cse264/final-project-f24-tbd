@@ -9,6 +9,9 @@
 
 - Premium users get tailored recommendations based on their reading history and likes. Standard users can comment and like books.
 
+- Free User Login: Username: Alexis Password: alg326
+- Premium User Login: Username: Liza Password: lit426
+
 ### Must use a database (you choose)
 
 - PostgreSQL for relational data structure (reviews, users, books); Hosted on Neon.
