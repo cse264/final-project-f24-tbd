@@ -1,5 +1,5 @@
-import { query } from '../../lib/db'; // Import the query function from db.js
-import jwt from 'jsonwebtoken'; // Import JWT library
+import { query } from '../../lib/db'; 
+import jwt from 'jsonwebtoken'; 
 
 export async function DELETE(req) {
   try {
@@ -11,7 +11,7 @@ export async function DELETE(req) {
     }
 
     const token = authHeader.split(' ')[1]; // Extract the token
-    const secretKey = process.env.JWT_SECRET; // Ensure you have your secret key set in the environment variables
+    const secretKey = process.env.JWT_SECRET;
 
     let decoded;
     try {

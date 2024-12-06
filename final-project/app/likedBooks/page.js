@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 const decodeJWT = (token) => {
   if (!token) return null;
   const payload = JSON.parse(atob(token.split('.')[1])); // Decoding the JWT payload
-  return payload.userId; // Adjust this based on your token structure
+  return payload.userId; 
 };
 
 export default function LikedBooksPage() {

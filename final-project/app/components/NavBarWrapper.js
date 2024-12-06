@@ -45,7 +45,7 @@ const NavBarWrapper = () => {
 const decodeJWT = (token) => {
   try {
     const payload = JSON.parse(atob(token.split('.')[1])); // Decode JWT payload
-    return payload;  // Ensure you are getting the correct structure of the token
+    return payload; 
   } catch (error) {
     return null; // Return null if token is invalid
   }

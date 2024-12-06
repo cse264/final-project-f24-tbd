@@ -11,7 +11,7 @@ export default function Recommended() {
     async function fetchRecommendations() {
       try {
         // Retrieve the token from local storage or context
-        const token = localStorage.getItem("token"); // Replace with your token storage mechanism
+        const token = localStorage.getItem("token");
 
         if (!token) {
           throw new Error("Authentication token is missing");

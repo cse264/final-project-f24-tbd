@@ -1,4 +1,4 @@
-'use client' // Ensure this is a client component since we're using hooks
+'use client'
 
 import { useState } from 'react';
 import axios from 'axios';
@@ -7,7 +7,6 @@ export default function Search() {
   const [bookName, setBookName] = useState('');
   const [books, setBooks] = useState([]);
   const [error, setError] = useState('');
-  const [userId, setUserId] = useState(1); // For now, hardcoded userId (replace with actual user ID)
   const [reviewText, setReviewText] = useState('');
   const [isSubmittingReview, setIsSubmittingReview] = useState(false);
   const [activeBookId, setActiveBookId] = useState(null); // Track which book is currently being reviewed
@@ -24,7 +23,7 @@ export default function Search() {
       const res = await axios.get(`https://www.googleapis.com/books/v1/volumes`, {
         params: {
           q: bookName,
-          key: process.env.GOOGLE_BOOKS_API_KEY, // Store your API key in .env.local
+          key: process.env.GOOGLE_BOOKS_API_KEY, 
         },
       });
 

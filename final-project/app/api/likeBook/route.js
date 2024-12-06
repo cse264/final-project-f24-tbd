@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { pool } from '../../lib/db';  // Ensure this path is correct
+import { pool } from '../../lib/db';
 
 export async function POST(req) {
   try {

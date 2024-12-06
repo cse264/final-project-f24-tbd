@@ -1,4 +1,3 @@
-// In AuthContext.js
 'use client'
 
 import { createContext, useContext, useState, useEffect } from 'react';
@@ -11,7 +10,7 @@ const decodeJWT = (token) => {
   
   try {
     const payload = JSON.parse(atob(token.split('.')[1])); // Decode the JWT payload
-    return payload.membership; // Adjust this based on your token structure
+    return payload.membership; 
   } catch (error) {
     console.error('Failed to decode JWT:', error);
     return null;

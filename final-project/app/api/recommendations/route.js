@@ -1,5 +1,5 @@
-import { query } from "../../lib/db"; // Adjust the path as necessary
-import jwt from "jsonwebtoken"; // Install via npm install jsonwebtoken
+import { query } from "../../lib/db"; 
+import jwt from "jsonwebtoken"; 
 
 export async function GET(req) {
   try {
@@ -12,7 +12,7 @@ export async function GET(req) {
     const token = authHeader.split(" ")[1];
     
     // Verify and decode the token
-    const secret = process.env.JWT_SECRET; // Ensure your secret is set in the environment variables
+    const secret = process.env.JWT_SECRET;
     let decoded;
     try {
       decoded = jwt.verify(token, secret);
@@ -20,7 +20,7 @@ export async function GET(req) {
       return new Response(JSON.stringify({ error: "Invalid token" }), { status: 403 });
     }
 
-    const userId = decoded.userId; // Assuming the token contains a 'userId' field
+    const userId = decoded.userId; 
     if (!userId) {
       return new Response(JSON.stringify({ error: "User ID missing from token" }), { status: 400 });
     }
@@ -50,7 +50,7 @@ export async function GET(req) {
       }
 
       const apiData = await response.json();
-      const genres = apiData.volumeInfo.categories || []; // Google Books API returns genres under 'categories'
+      const genres = apiData.volumeInfo.categories || []; 
 
       return {
         ...book,
